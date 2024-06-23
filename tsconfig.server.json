@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "types": ["node"],
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "inlineSourceMap": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "stripInternal": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "pretty": true,
+    "declaration": true,
+    "strict": true, // 启用所有严格类型检查选项
+    "noEmitOnError": true, // 类型错误时不输出文件
+    "forceConsistentCasingInFileNames": true // 确保文件名大小写一致
+  },
+  "include": ["src/server.ts"],
+  "exclude": ["node_modules"]
+}
