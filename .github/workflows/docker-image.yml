@@ -40,10 +40,6 @@ jobs:
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
-      - name: Run Docker Container
-        run: |
-          docker run -d -p 3000:3000 --name person-blog ${{ secrets.DOCKERHUB_USERNAME }}/person-blog:${{ steps.get_tag.outputs.tag }}
-
   build-docker-ACR:
     runs-on: ubuntu-latest
     steps:
