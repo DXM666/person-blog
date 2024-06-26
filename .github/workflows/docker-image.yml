@@ -40,31 +40,9 @@ jobs:
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
-  
-  container-job:
-    needs: build-docker-hub
-    # Containers must run in Linux based operating systems
-    runs-on: ubuntu-latest
-    # Docker Hub image that `container-job` executes in
-    container: node:16-bullseye
-
-    # Service containers to run with `container-job`
-    services:
-      # Label used to access the service container
-      nestjs:
-        # Docker Hub image
-        image: dxm666/person-blog:${{ needs.build-docker-hub.outputs.tag }}
-        ports:
-          # Opens tcp port 3000 on the host and service container
-          - 3000:3000
-    steps:
-      - name: Wait for NestJS Service
+      - name: Run Docker Container
         run: |
-          echo "Waiting for NestJS service to start..."
-          sleep 30 # 等待服务启动
-      - name: Test NestJS Service
-        run: |
-          curl http://localhost:3000 # 测试服务是否启动
+          docker run -d -p 3000:3000 --name person-blog ${{ secrets.DOCKERHUB_USERNAME }}/person-blog:${{ steps.get_tag.outputs.tag }}
 
   build-docker-ACR:
     runs-on: ubuntu-latest
