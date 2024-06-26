@@ -84,7 +84,7 @@ jobs:
       # Label used to access the service container
       nestjs:
         # Docker Hub image
-        image: dxm666/person-blog:lastest
+        image: dxm666/person-blog:${{ github.ref }}
         ports:
           # Opens tcp port 3000 on the host and service container
           - 3000:3000
