@@ -74,3 +74,23 @@ jobs:
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
+  build-docker-SWR:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to Huawei Cloud
+      run: docker login -u cn-north-4@HLHK2EZM2D3SXNCK3POM -p 5832611ec0d8c09d7d8c3051722bc75e05ee6b383427d7880cb8161cf75acb6a swr.cn-north-4.myhuaweicloud.com
+
+    - name: Build and Push Docker Image
+      id: docker_build
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: swr.cn-north-4.myhuaweicloud.com/dxm666/person-blog:${{ steps.get_tag.outputs.tag }}
