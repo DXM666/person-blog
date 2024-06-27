@@ -106,4 +106,4 @@ jobs:
         file: ./Dockerfile
         push: true
         provenance: false
-        tags: swr.cn-east-3.myhuaweicloud.com/dxm666/person-blog:${{ steps.get_tag.outputs.tag }}
+        tags: swr.cn-east-3.myhuaweicloud.com/dxm123/person-blog:${{ steps.get_tag.outputs.tag }}
