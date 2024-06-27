@@ -88,10 +88,12 @@ jobs:
     - name: Login to Huawei Cloud
       uses: docker/login-action@v2
       with:
-        registry: swr.cn-north-4.myhuaweicloud.com
-        username: cn-north-4@HLHK2EZM2D3SXNCK3POM
+        # registry: swr.cn-north-4.myhuaweicloud.com
+        # username: cn-north-4@HLHK2EZM2D3SXNCK3POM
+        # password: 5832611ec0d8c09d7d8c3051722bc75e05ee6b383427d7880cb8161cf75acb6a
+        registry: swr.cn-east-3.myhuaweicloud.com
+        username: cn-east-3@HLHK2EZM2D3SXNCK3POM
         password: 5832611ec0d8c09d7d8c3051722bc75e05ee6b383427d7880cb8161cf75acb6a
-        
     - name: Get the tag
       id: get_tag
       run: echo ::set-output name=tag::$(git describe --tags --abbrev=0)
@@ -104,4 +106,4 @@ jobs:
         file: ./Dockerfile
         push: true
         provenance: false
-        tags: swr.cn-north-4.myhuaweicloud.com/dxm666/person-blog:${{ steps.get_tag.outputs.tag }}
+        tags: swr.cn-east-3.myhuaweicloud.com/dxm666/person-blog:${{ steps.get_tag.outputs.tag }}
