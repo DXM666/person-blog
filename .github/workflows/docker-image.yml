@@ -103,4 +103,5 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
+        provenance: false
         tags: swr.cn-north-4.myhuaweicloud.com/dxm666/person-blog:${{ steps.get_tag.outputs.tag }}
