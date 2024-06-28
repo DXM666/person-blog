@@ -69,7 +69,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.ACR_REGISTRY }}/dxm666/person-blog:${{ steps.get_tag.outputs.tag }}
+          tags: ${{ secrets.ACR_REGISTRY }}/${{ secrets.ACR_ORGANIZATION }}/person-blog:${{ steps.get_tag.outputs.tag }}
 
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
